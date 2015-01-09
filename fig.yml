@@ -1,0 +1,24 @@
+mysql:
+  image: muzili/mariadb:latest
+  volumes:
+    - ./data/mariadb/data:/data
+    - ./data/mariadb/log:/var/log/mysql
+  environment:
+    USER: admin
+    PASS: 41aRr.gJCtdk
+
+gerrit:
+  image: muzili/gerrit:latest
+  links:
+    - mysql:mysql
+  environment:
+    VIRTUAL_HOST: phab.example.com
+    MTA_DOMAIN: example.com
+    SMTP_HOST: smtp-host
+    SMTP_PORT: smtp-port
+    SMTP_USER: smtp-user
+    SMTP_PASS: smtp-pass
+    SMTP_PROTO: tls
+  volumes:
+    - ./data:/data
+
