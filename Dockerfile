@@ -7,10 +7,10 @@ ENV GERRIT_HOME /data/${GERRIT_USER}
 ENV GERRIT_WAR ${GERRIT_HOME}/gerrit.war
 ENV GERRIT_VERSION 2.9.3
 
-# Install git to download Phabricator.
-RUN yum -y -q install java-1.7.0-openjdk.x86_64 &&
-    useradd -m ${GERRIT_USER} &&
-    mkdir -p ${GERRIT_HOME} &&
+# Install openjdk
+RUN yum -y -q install java-1.7.0-openjdk.x86_64 && \
+    useradd ${GERRIT_USER} && \
+    mkdir -p ${GERRIT_HOME} && \
     chown -R ${GERRIT_USER}:${GERRIT_USER} $GERRIT_HOME
 
 ADD scripts /scripts
