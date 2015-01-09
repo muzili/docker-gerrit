@@ -12,7 +12,7 @@ gerrit:
   links:
     - mysql:mysql
   environment:
-    VIRTUAL_HOST: phab.example.com
+    VIRTUAL_HOST: gerrit.example.com
     MTA_DOMAIN: example.com
     SMTP_HOST: smtp-host
     SMTP_PORT: smtp-port
