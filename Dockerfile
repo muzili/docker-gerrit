@@ -8,7 +8,7 @@ ENV GERRIT_WAR ${GERRIT_HOME}/gerrit.war
 ENV GERRIT_VERSION 2.9.3
 
 # Install git to download Phabricator.
-RUN yum -y -q install java-1.7.0-openjdk &&
+RUN yum -y -q install java-1.7.0-openjdk.x86_64 &&
     useradd -m ${GERRIT_USER} &&
     mkdir -p ${GERRIT_HOME} &&
     chown -R ${GERRIT_USER}:${GERRIT_USER} $GERRIT_HOME
