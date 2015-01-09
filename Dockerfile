@@ -5,7 +5,7 @@ MAINTAINER Joshua Lee <muzili@gmail.com>
 ENV GERRIT_USER gerrit2
 ENV GERRIT_HOME /data/${GERRIT_USER}
 ENV GERRIT_WAR ${GERRIT_HOME}/gerrit.war
-ENV GERRIT_VERSION 2.9.3
+ENV GERRIT_VERSION 2.9.4
 
 # Install openjdk
 RUN yum -y -q install java-1.7.0-openjdk.x86_64 && \
