@@ -1,10 +1,9 @@
 pre_start_action() {
-    mkdir -p $GERRIT_HOME/gerrit
     mkdir -p $LOG_DIR/supervisor
 
-    chown $GERRIT_USER:$GERRIT_USER -R $GERRIT_HOME
+    mkdir -p ${GERRIT_HOME}/gerrit
+    chown $GERRIT_USER:$GERRIT_USER -R ${GERRIT_HOME}
     java -jar $GERRIT_WAR init --no-auto-start --batch -d ${GERRIT_HOME}/gerrit
-
     cat > ${GERRIT_HOME}/gerrit/etc/secure.config <<EOF
 #[database]
 #    password = $DB_PASS
@@ -42,7 +41,7 @@ EOF
     server = ldap://$LDAP_HOST
     username = $LDAP_USER
     accountBase = ou=users,$LDAP_BASE
-    accountPattern = (&(objectclass=posixAccount)(uid=\${uid}))
+    accountPattern = (&(objectclass=posixAccount)(uid=\${username}))
     accountFullName = cn
     accountEmailAddress = \${uid}@$MTA_DOMAIN
     groupBase = ou=groups,$LDAP_BASE
@@ -54,7 +53,7 @@ EOF
     maxSubjectLength = 65
     maxLineLength = 80
 EOF
-
+    java -jar $GERRIT_WAR init --no-auto-start --batch -d ${GERRIT_HOME}/gerrit
     touch /etc/msmtprc
     mkdir -p $LOG_DIR/msmtp
     chown $GERRIT_USER:$GERRIT_USER $LOG_DIR/msmtp
