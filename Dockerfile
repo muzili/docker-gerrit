@@ -8,25 +8,26 @@ ENV GERRIT_WAR ${GERRIT_HOME}/gerrit.war
 ENV GERRIT_VERSION 2.9.4
 
 # Install openjdk
-RUN yum -y -q install java-1.7.0-openjdk.x86_64 && \
+RUN yum -y -q install java-1.7.0-openjdk.x86_64 git && \
     useradd ${GERRIT_USER} && \
     mkdir -p ${GERRIT_HOME} && \
-    chown -R ${GERRIT_USER}:${GERRIT_USER} $GERRIT_HOME
+    touch /first_run
 
 ADD scripts /scripts
 ADD http://gerrit-releases.storage.googleapis.com/gerrit-${GERRIT_VERSION}.war ${GERRIT_WAR}
+RUN chown -R ${GERRIT_USER}:${GERRIT_USER} $GERRIT_HOME
+
 
 # Expose our web root and log directories log.
 VOLUME ["/data", "/var/log"]
 
-USER $GERRIT_USER
 WORKDIR $GERRIT_HOME
 
-ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64/jre
+ENV JAVA_HOME /usr/lib/jvm/jre
 ENV AUTH_TYPE DEVELOPMENT_BECOME_ANY_ACCOUNT
 
 # Expose the port
-EXPOSE 8080 29418
+EXPOSE 80 29418
 
 # Kicking in
 CMD ["/scripts/start.sh"]
