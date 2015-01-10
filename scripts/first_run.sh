@@ -42,12 +42,12 @@ EOF
     server = ldap://$LDAP_HOST
     username = $LDAP_USER
     accountBase = ou=users,$LDAP_BASE
-    accountPattern = (&(objectclass=posixAccount)(uid=${uid}))
+    accountPattern = (&(objectclass=posixAccount)(uid=\${uid}))
     accountFullName = cn
-    accountEmailAddress = ${uid}@$MTA_DOMAIN
+    accountEmailAddress = \${uid}@$MTA_DOMAIN
     groupBase = ou=groups,$LDAP_BASE
-    groupPattern = (cn=${groupname})
-    groupMemberPattern = (|(memberUid=${username})(gidNumber=${gidNumber}))
+    groupPattern = (cn=\${groupname})
+    groupMemberPattern = (|(memberUid=\${username})(gidNumber=\${gidNumber}))
 [user]
     email = gerrit2@$MTA_DOMAIN
 [commitmessage]
