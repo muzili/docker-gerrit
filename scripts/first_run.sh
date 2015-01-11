@@ -43,7 +43,7 @@ EOF
     accountBase = ou=users,$LDAP_BASE
     accountPattern = (&(objectclass=posixAccount)(uid=\${username}))
     accountFullName = cn
-    accountEmailAddress = \${uid}@$MTA_DOMAIN
+    accountEmailAddress = \${Email}
     groupBase = ou=groups,$LDAP_BASE
     groupPattern = (cn=\${groupname})
     groupMemberPattern = (|(memberUid=\${username})(gidNumber=\${gidNumber}))
