@@ -4,7 +4,7 @@ MAINTAINER Joshua Lee <muzili@gmail.com>
 
 ENV GERRIT_USER gerrit2
 ENV GERRIT_HOME /data/${GERRIT_USER}
-ENV GERRIT_WAR ${GERRIT_HOME}/gerrit.war
+ENV GERRIT_WAR /tmp/gerrit.war
 ENV GERRIT_VERSION 2.9.4
 
 # Install openjdk
