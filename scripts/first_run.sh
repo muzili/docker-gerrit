@@ -48,7 +48,7 @@ EOF
     accountBase = ou=users,$LDAP_BASE
     accountPattern = (&(objectclass=inetOrgPerson)(uid=\${username}))
     accountFullName = cn
-    accountEmailAddress = \${Email}
+    accountEmailAddress = Email
     groupBase = ou=groups,$LDAP_BASE
     groupPattern = (cn=\${groupname})
     groupMemberPattern = (|(memberUid=\${username})(gidNumber=\${gidNumber}))
