@@ -21,7 +21,7 @@ RUN chown -R ${GERRIT_USER}:${GERRIT_USER} $GERRIT_HOME
 # Expose our web root and log directories log.
 VOLUME ["/data", "/var/log"]
 
-WORKDIR $GERRIT_HOME
+WORKDIR /home/${GERRIT_USER}
 
 ENV JAVA_HOME /usr/lib/jvm/jre
 ENV AUTH_TYPE DEVELOPMENT_BECOME_ANY_ACCOUNT
