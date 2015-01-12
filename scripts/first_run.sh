@@ -46,14 +46,14 @@ EOF
     server = ldap://$LDAP_HOST
     username = $LDAP_USER
     accountBase = ou=users,$LDAP_BASE
-    accountPattern = (&(objectclass=posixAccount)(uid=\${username}))
+    accountPattern = (&(objectclass=inetOrgPerson)(uid=\${username}))
     accountFullName = cn
     accountEmailAddress = \${Email}
     groupBase = ou=groups,$LDAP_BASE
     groupPattern = (cn=\${groupname})
     groupMemberPattern = (|(memberUid=\${username})(gidNumber=\${gidNumber}))
 [user]
-    email = gerrit2@$MTA_DOMAIN
+    email = gerrit2@$SMTP_DOMAIN
 [commitmessage]
     maxSubjectLength = 65
     maxLineLength = 80
