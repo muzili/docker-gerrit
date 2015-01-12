@@ -26,6 +26,11 @@ EOF
     gitBasicAuth = true
 [sendemail]
     smtpServer = $SMTP_HOST
+    smtpServerPort = $SMTP_PORT
+    smtpEncryption = $SMTP_PROTO
+    sslVerify = false
+    smtpUser = $SMTP_USER
+    smtpPass = $SMTP_PASS
     from = MIXED
 [container]
     user = $GERRIT_USER
