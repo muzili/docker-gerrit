@@ -50,8 +50,8 @@ EOF
     accountFullName = cn
     accountEmailAddress = mail
     groupBase = ou=groups,$LDAP_BASE
-    groupPattern = (cn=\${groupname})
-    groupMemberPattern = (|(memberUid=\${username})(gidNumber=\${gidNumber}))
+#    groupPattern = (cn=\${groupname})
+#    groupMemberPattern = (|(memberUid=\${username})(gidNumber=\${gidNumber}))
 [user]
     email = gerrit2@$SMTP_DOMAIN
 [commitmessage]
